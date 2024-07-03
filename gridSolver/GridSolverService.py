@@ -1,10 +1,9 @@
 import copy
 import random
-
 from gridSolver.Grid import Grid
 
 
-class GridService:
+class GridSolverService:
 
     def fillGrid(self, grid: Grid):
         c = 0

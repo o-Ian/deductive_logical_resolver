@@ -1,41 +1,49 @@
-from Grid import Grid
-from gridRecognition.cropImage import crop_grid
-from gridRecognition.applyModel import applyModel
-
+from gridSolver.Grid import Grid
+from gridRecognition.GridRecognitionService import GridRecognitionService
+from gridSolver.GridSolverService import GridSolverService
 
 possible_elements_5 = ['circle', 'plus', 'square', 'triangle', 'star']
 possible_elements_4 = ['circle', 'plus', 'square', 'triangle']
+possible_elements_3 = ['plus', 'circle', 'triangle']
 
-matriz_5x5= [
-    ['1', '2', '-', '-', '-'],
-    ['2', '-', '-', '-', '-'],
-    ['-', '-', '1', '-', '-'],
-    ['-', '1', '-', '-', '-'],
-    ['-', '-', '-', '-', '1']
-]
+# Instantiating Services Objects
+gridRecognitionService = GridRecognitionService()
+gridSolverService = GridSolverService()
 
-matriz_4x4= [
-    ['-', '-', '-', '-'],
-    ['-', '-', '-', '-'],
-    ['-', '-', '-', '-'],
-    ['-', '-', '-', '-'],
-]
-img_path = "/Users/ian/IdeaProjects/Preenchedora_matriz/gridRecognition/infFiles/grid_image.png"
-folder_symbols = "/Users/ian/IdeaProjects/Preenchedora_matriz/gridRecognition/infFiles/test"
-grid_size = (5,5)
+img_path = gridRecognitionService.get_last_accessed_file('/Users/ian/IdeaProjects/Preenchedora_matriz/gridRecognition/infFiles/entire_grids');
+folder_symbols = "/Users/ian/IdeaProjects/Preenchedora_matriz/gridRecognition/infFiles/specific_symbols"
 
-#Cria uma imagem pra cada elemento do grid
-create_crid = crop_grid(img_path, grid_size)
+# Number of columns and rows of grid (if it's a square)
+matriz = 5
 
-#Olha os arquivos dentro do folder e aplica o modelo de reconhecimento
-matriz_inicial = applyModel(folder_symbols, grid_size)
+if (matriz == 5):
+    grid_size = (5, 5)
+    possible_elements_default = possible_elements_5
+elif (matriz == 4):
+    grid_size = (4, 4)
+    possible_elements_default = possible_elements_4
+elif (matriz == 3):
+    grid_size = (3, 3)
+    possible_elements_default = possible_elements_3
 
-#Resolver matriz
-gridClass = Grid(matriz_inicial, possible_elements_5)
+# If your grid size was not taken into account, personalize your own value
+# grid_size = (row_number, column_number)
+# possible_elements_default = possible_elements_x
 
-gridClass.fillGrid()
+# Create an image for each grid element
+create_grid = gridRecognitionService.crop_grid(img_path, grid_size)
 
-print(gridClass.question_mark_position)
-for rows in gridClass.grid:
+# Check all the created grid elements and applies the recognize model
+initial_matriz = gridRecognitionService.applyModel(folder_symbols, grid_size)
+
+# Solving sudoku
+gridEntity = Grid(initial_matriz, possible_elements_default)
+resolved_grid = gridSolverService.fillGrid(gridEntity)
+
+print(f'The grid image used was: {img_path}')
+
+for rows in resolved_grid:
     print(rows)
-print(f'A resposta é: {gridClass.grid[gridClass.question_mark_position[0]][gridClass.question_mark_position[1]]}')
+
+if(gridEntity.question_mark_position):
+    print(f'The answer is: {resolved_grid[gridEntity.question_mark_position[0]][gridEntity.question_mark_position[1]]}')

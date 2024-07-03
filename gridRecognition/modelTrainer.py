@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 
 import os
 
-#preparing data
+# Preparing data
 img2vec = Img2Vec()
 
 data_dir = './data'
@@ -31,18 +31,17 @@ for j, dir_ in enumerate([train_dir, val_dir]):
     data[['training_labels', 'validation_labels'][j]] = labels
 
 
-#training model
-
+# Training model
 model = RandomForestClassifier()
 model.fit(data['training_data'], data['training_labels'])
 
-#testing model
+# Testing model
 y_pred = model.predict(data['validation_data'])
 score = accuracy_score(y_pred, data['validation_labels'])
 
 print(f'O modelo acertou {score*100}% das predições')
 
-#saving model into file
+# Saving model into file
 with open('/Users/ian/IdeaProjects/Preenchedora_matriz/gridRecognition/model/model.p', 'wb') as f:
     pickle.dump(model, f)
     f.close()

@@ -4,7 +4,7 @@ import random
 
 class Grid:
 
-    def __init__(self, grid, possible_elements):
+    def __init__(self, grid, possible_elements, question_mark_position=False):
         self.grid = grid
         self.old_grid = grid
         self.possible_elements = possible_elements
@@ -15,7 +15,7 @@ class Grid:
             fake_grid = copy.deepcopy(self.grid)
             c += 1
             print('#######################')
-            print(f'Tentativa número: {c}')
+            print(f'Attempt number: {c}')
             for cont_linha, linha in enumerate(fake_grid):
                 for cont_coluna, symbol in enumerate(linha):
                     if symbol == 'empty' or symbol == 'question_mark':
