@@ -1,2 +1,5 @@
-gridRecognition/infFiles/entire_grids/
-gridRecognition/infFiles/specific_symbols/
+gridRecognition/infFiles/entire_grids/*
+!gridRecognition/infFiles/entire_grids/.gitkeep
+
+gridRecognition/infFiles/specific_symbols/*
+!gridRecognition/infFiles/specific_symbols/.gitkeep

@@ -14,7 +14,7 @@ img_path = gridRecognitionService.get_last_accessed_file('/Users/ian/IdeaProject
 folder_symbols = "/Users/ian/IdeaProjects/Preenchedora_matriz/gridRecognition/infFiles/specific_symbols"
 
 # Number of columns and rows of grid (if it's a square)
-matriz = 5
+matriz = 4
 
 if (matriz == 5):
     grid_size = (5, 5)

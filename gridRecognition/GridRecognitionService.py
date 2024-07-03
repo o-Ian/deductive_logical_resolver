@@ -22,9 +22,10 @@ class GridRecognitionService:
     def delete_files_in_directory(self, directory_path):
         files = os.listdir(directory_path)
         for file in files:
-            file_path = os.path.join(directory_path, file)
-            if os.path.isfile(file_path):
-                os.remove(file_path)
+            if(file != '.gitkeep'):
+                file_path = os.path.join(directory_path, file)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
 
     def crop_grid(self, image_path, grid_size):
         img = Image.open(image_path)
@@ -75,9 +76,10 @@ class GridRecognitionService:
     def applyModel(self, folder_name, grid_size):
         matriz = self.createEmptyGrid(grid_size)
         for file in os.listdir(folder_name):
-            symbol = self.inference(f'{folder_name}/{file}')
-            file_name = file.replace('.png', '')
-            file_row = int(file_name.split('_')[0])
-            file_column = int(file_name.split('_')[1])
-            matriz[file_row][file_column] = symbol[0]
+            if(file != '.gitkeep'):
+                symbol = self.inference(f'{folder_name}/{file}')
+                file_name = file.replace('.png', '')
+                file_row = int(file_name.split('_')[0])
+                file_column = int(file_name.split('_')[1])
+                matriz[file_row][file_column] = symbol[0]
         return matriz
