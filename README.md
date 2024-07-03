@@ -15,7 +15,7 @@ Some shapes are already placed on the grid, and one space has a question mark. Y
 <img width="399" alt="Shape Sudoku example" src="https://github.com/o-Ian/deductive_logical_resolver/assets/49800676/8656b313-bef9-456d-9b5e-9ca7b5e92d3c">
 
 ## Where to find shape sudokus to solve?
-There's planty of youtube videos in that matter (most of them will work in our software), there's also books with shape sudokus.
+There's planty of youtube videos in that matter (most of them will work in our software), there's also books with shape sudokus. You just have to search for "Deductive Logical Thinking" or  "Shape Sudoku" on the web and you will find enough material.
 
 ## Requirements
 
