@@ -10,12 +10,13 @@ class GridRecognitionService:
         last_accessed_file = None
 
         for filename in os.listdir(folder_path):
-            filepath = os.path.join(folder_path, filename)
-            if os.path.isfile(filepath):
-                access_time = os.path.getmtime(filepath)
-                if access_time > last_accessed_time:
-                    last_accessed_time = access_time
-                    last_accessed_file = filepath
+            if(filename != '.gitkeep'):
+                filepath = os.path.join(folder_path, filename)
+                if os.path.isfile(filepath):
+                    access_time = os.path.getmtime(filepath)
+                    if access_time > last_accessed_time:
+                        last_accessed_time = access_time
+                        last_accessed_file = filepath
 
         return last_accessed_file
 
