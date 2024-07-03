@@ -25,7 +25,7 @@ The shape sudoku you want to solve must meet the following requirements:
   
   <img width="520" alt="Screenshot 2024-07-04 at 00 27 16" src="https://github.com/o-Ian/deductive_logical_resolver/assets/49800676/eac194d2-66de-4806-81d7-a45a8720674b">
   
-- A screenshot of the shape sudoku to be solved needs to be taken.
+- A precise screenshot of the shape sudoku was taken, the screenshot shows ONLY the sudoku, with no other unwanted elements.
   
 NOTE 1: If the provided sudoku has any shape other than these ones, the software won't be able to recognize it, thus not being able to solve it.
 
@@ -35,7 +35,7 @@ NOTE 3: The shape sudoku does not need to have a question mark symbol as part of
 
 ## How to use it
 1. Take a screenshot of the Shape Sudoku you want to solve.
-2. Place the screenshot in the 'gridRecognition/entireGrids/' folder.
+2. Place the screenshot in the 'gridRecognition/entireGrids/' folder, the application will automatically get the last screenshot placed into the folder to work with.
 3. Set the variable grid_size to the number of rows and columns in your Sudoku.
 4. Set the variable possible_elements_default with a list of all possible shapes in your Sudoku (these shapes must be recognizable by the software, see above).
 5. Run the main.py file.
