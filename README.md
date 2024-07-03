@@ -62,4 +62,4 @@ FYI: The application will convert the symbols into their corresponding text.
 
 For any queries, feel free to contact me:
 
-- [LinkedIn](https://choosealicense.com/licenses/mit/)
+- [LinkedIn](https://www.linkedin.com/in/ian-silva-s/)
